@@ -11,6 +11,23 @@
 ---
 
 
+## Índice
+
+- [Introdução](#introdução)
+
+- [Objetivos Gerais](#objetivos-gerais)
+
+- [Preparação dos dados](#preparação-dos-dados)
+
+- [Objetivo geral](#Objetivo-geral)
+
+- [Justificativas](#Justificativas)
+
+- [Público alvo](#Público-alvo)
+
+
+---
+
 ## Introdução
 
 Esse trabalho teve como objetivo demonstrar minhas habilidades e potencial para conseguir a vaga de analista de dados. 
@@ -30,8 +47,6 @@ descontos concedidos em cada unidade? Relacione essa informação de quantidade
 de descontos com a relação de nº de leads e matrículas para essa unidade.
 
 ---
-
-## Análise exploratórida dos dados
 
 
 ### Preparação dos dados
@@ -64,10 +79,17 @@ Assistente['Data da matrícula'] = pd.to_datetime(Assistente['Data da matrícula
 
 ## Resultados da análise de dados
 
+
+
 ### Primeira Análise:
 
 
+[Código](https://github.com/ThalesMelo1/Coleguium-Entrevista/blob/main/Code/An%C3%A1lise_1.ipynb)
+
+
+
 **Objetivo: identificação do tempo médio que as famílias levam para sematricular após a realização da inscrição e o período do ciclo de matrículas em queesse tempo médio entre inscrição e matrícula é mais curto.**
+
 
 A primeira análise foi feita calculando a diferença dos dias entre a data da inscrição e a matrícula. Então foi realizado a separação das novas matrículas das rematrículas.
 
@@ -80,9 +102,9 @@ rematrícula = Assistente.loc[Assistente['Tipo'] == 'Rematrícula']</pre>
 **Observação: Essa separação foi feita durante toda a análise.**
 
 
-#### **Resultados**
+### **Resultados**
 
- média de dias para fazer uma nova matrícula é de: 28 dias.
+ A média de dias para fazer uma nova matrícula é de: 28 dias.
 
  A média de dias para fazer uma rematrícula é de: 84 dias.
 
@@ -90,6 +112,8 @@ rematrícula = Assistente.loc[Assistente['Tipo'] == 'Rematrícula']</pre>
  
 
 ### Segunda Análise:
+
+[Código](https://github.com/ThalesMelo1/Coleguium-Entrevista/blob/main/Code/An%C3%A1lise_2.ipynb)
 
 
 **Objetivo: Identifique se há alguma correlação entre os descontos concedidos, o período do ciclo e o volume de matrículas no período.**
@@ -111,10 +135,13 @@ dataRematrícula = {
 
 
 
-#### Resultados
+### Resultados
 
 
 <img width="839" height="376" alt="image" src="https://github.com/user-attachments/assets/917924d4-6ecd-44cc-867a-3fbe83b014b3" />
+
+
+
 
 <img width="977" height="376" alt="image" src="https://github.com/user-attachments/assets/c25dcf3e-5aee-4517-89b9-95921d035d0c" />
 
@@ -132,6 +159,8 @@ Enquanto nas novas matrículas, o pico acontece nos meses de novembro e dezembro
 
 
 ### Terceira Análise
+
+[Código](https://github.com/ThalesMelo1/Coleguium-Entrevista/blob/main/Code/An%C3%A1lise_3.ipynb)
 
 
 **Objetivo: Quais unidades apresentam maior concessão de descontos e qual o % médio de descontos concedidos em cada unidade? Relacione essa informação de quantidade de descontos com a relação de nº de leads e matrículas para essa unidade.**
@@ -178,55 +207,29 @@ médiaRematrícula = rematrícula.groupby('Unidade').agg(
 médiaRematrícula['média'] = round(médiaRematrícula['Soma']/médiaRematrícula['numDescontos'])</pre>
 
 
-## Resultados
+### Resultados
+
+
+<img width="780" height="540" alt="image" src="https://github.com/user-attachments/assets/eb890ed6-4947-4ced-b3a0-cf99077ad1c9" />
+
+
+<img width="780" height="540" alt="image" src="https://github.com/user-attachments/assets/b2f977c1-df70-41db-9b73-c8d4aae56b63" />
+
+
+<img width="1389" height="859" alt="image" src="https://github.com/user-attachments/assets/64f5890c-12b6-46bc-be69-883ffc90c929" />
 
 
 
+O resultado obtido foi: 
 
+As novas matrículas tiveram uma vantagem ligeira em média de descontos. 
+É legal observar que a unidade Carajás foi a que mais deu descontos e a que mais teve matrículas.
 
-### Resultados obtidos com o modelo 1.
-
-Apresente aqui os resultados obtidos com a indução do modelo 1. 
-Apresente uma matriz de confusão quando pertinente. Apresente as medidas de performance
-apropriadas para o seu problema. 
-Por exemplo, no caso de classificação: precisão, revocação, F-measure, acurácia.
-
-
-### Resultados obtidos com o modelo 2.
-
-Repita o passo anterior com os resultados do modelo 2.
+A quantidade desconstos não parece ter muita relação com o número de matrículas nos casos além dp Carajás.
 
 
 ## 8. Conclusão
 
-Apresente aqui a conclusão do seu trabalho. Discussão dos resultados obtidos no trabalho, 
-onde se verifica as observações pessoais de cada aluno.
+Foi possível perceber com a análise que existe uma diferença entre as novas matrículas e as rematrículas.
+Diferença que é necessária ser considerada para as estratégias de negócios.
 
-Uma conclusão deve ter 3 partes:
-
-   * Breve resumo do que foi desenvolvido
-	 * Apresenação geral dos resultados obtidos com discussão das vantagens e desvantagens do sistema inteligente
-	 * Limitações e possibilidades de melhoria
-
-
-# REFERÊNCIAS
-
-Por exemplo:
-
-**[1]** - _ELMASRI, Ramez; NAVATHE, Sham. **Sistemas de banco de dados**. 7. ed. São Paulo: Pearson, c2019. E-book. ISBN 9788543025001._
-
-**[2]** - _COPPIN, Ben. **Inteligência artificial**. Rio de Janeiro, RJ: LTC, c2010. E-book. ISBN 978-85-216-2936-8._
-
-**[3]** - _CORMEN, Thomas H. et al. **Algoritmos: teoria e prática**. Rio de Janeiro, RJ: Elsevier, Campus, c2012. xvi, 926 p. ISBN 9788535236996._
-
-**[4]** - _SUTHERLAND, Jeffrey Victor. **Scrum: a arte de fazer o dobro do trabalho na metade do tempo**. 2. ed. rev. São Paulo, SP: Leya, 2016. 236, [4] p. ISBN 9788544104514._
-
-**[5]** - _RUSSELL, Stuart J.; NORVIG, Peter. **Inteligência artificial**. Rio de Janeiro: Elsevier, c2013. xxi, 988 p. ISBN 9788535237016._
-
-
-
-# APÊNDICES
-
-**Colocar link:**
-
-Do código (armazenado no repositório);
