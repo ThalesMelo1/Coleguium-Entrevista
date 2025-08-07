@@ -79,7 +79,11 @@ com o fluxo de processamento.
 
 **Objetivo: identificação do tempo médio que as famílias levam para sematricular após a realização da inscrição e o período do ciclo de matrículas em queesse tempo médio entre inscrição e matrícula é mais curto.**
 
-A primeira análise foi feita calculando a diferença dos dias entre a data da inscrição e a matrícula. O cálculo foi realizado separando as novas matrículas das rematrículas.
+A primeira análise foi feita calculando a diferença dos dias entre a data da inscrição e a matrícula. Então foi realizado a separação das novas matrículas das rematrículas.
+
+<pre lang="markdown"Assistente['Diferença'] = (Assistente['Data da matrícula'] - Assistente['Data de Inscrição']).dt.days```
+
+
 
 ### Terceira Análise
 
