@@ -19,11 +19,13 @@
 
 - [Preparação dos dados](#preparação-dos-dados)
 
-- [Objetivo geral](#Objetivo-geral)
+- [Primeira Análise](#primeira-análise)
 
-- [Justificativas](#Justificativas)
+- [Segunda Análise](#segunda-análise)
 
-- [Público alvo](#Público-alvo)
+- [Terceira Análise](#terceira-análise)
+
+- [Conclusão](#conclusão)
 
 
 ---
@@ -31,6 +33,8 @@
 ## Introdução
 
 Esse trabalho teve como objetivo demonstrar minhas habilidades e potencial para conseguir a vaga de analista de dados. 
+
+---
 
 
 ###    Objetivos gerais
@@ -54,31 +58,28 @@ de descontos com a relação de nº de leads e matrículas para essa unidade.
 
 Para preparar os dados foi feita a mesclagem das bases;
 
-<pre lang="markdown">Assistente = Inscritos.merge(Matricula, on = 'Código Candidato', how = 'left')</pre>
+<pre lang="Python">Assistente = Inscritos.merge(Matricula, on = 'Código Candidato', how = 'left')</pre>
 
 
 Exclusão de nulos;
 
-<pre lang="markdown">Assistente = Assistente.dropna(subset = 'Data de Inscrição')
- Assistente = Assistente.dropna(subset = 'Data da matrícula')</pre>```
+<pre lang="Python">Assistente = Assistente.dropna(subset = 'Data de Inscrição')
+Assistente = Assistente.dropna(subset = 'Data da matrícula')</pre>
  
 
 Exclusão de valores duplos;
 
-<pre lang="markdown">Assistente = Assistente.drop_duplicates(subset= ['Código Candidato', 'Data de Inscrição', 'Série'])</pre>```
+<pre lang="Python">Assistente = Assistente.drop_duplicates(subset= ['Código Candidato', 'Data de Inscrição', 'Série'])</pre>
 
 
 Formatação dos valores das datas;
 
-<pre lang="markdown">Assistente['Data de Inscrição'] = pd.to_datetime(Assistente['Data de Inscrição'], format='mixed', dayfirst=True)
+<pre lang="Python">Assistente['Data de Inscrição'] = pd.to_datetime(Assistente['Data de Inscrição'], format='mixed', dayfirst=True)
 Assistente['Data de Inscrição'] = Assistente['Data de Inscrição'].dt.date
 Assistente['Data de Inscrição'] = pd.to_datetime(Assistente['Data de Inscrição'], format='%d/%m/%Y', dayfirst=True)
 Assistente['Data da matrícula'] = pd.to_datetime(Assistente['Data da matrícula'], format="%d/%m/%Y")</pre>
 
 ---
-
-## Resultados da análise de dados
-
 
 
 ### Primeira Análise:
@@ -93,9 +94,9 @@ Assistente['Data da matrícula'] = pd.to_datetime(Assistente['Data da matrícula
 
 A primeira análise foi feita calculando a diferença dos dias entre a data da inscrição e a matrícula. Então foi realizado a separação das novas matrículas das rematrículas.
 
-<pre lang="markdown">Assistente['Diferença'] = (Assistente['Data da matrícula'] - Assistente['Data de Inscrição']).dt.days</pre>
+<pre lang="Python">Assistente['Diferença'] = (Assistente['Data da matrícula'] - Assistente['Data de Inscrição']).dt.days</pre>
 
-<pre lang="markdown">matriculaNova = Assistente.loc[Assistente['Tipo'] == 'Matrícula nova']
+<pre lang="Python">matriculaNova = Assistente.loc[Assistente['Tipo'] == 'Matrícula nova']
 rematrícula = Assistente.loc[Assistente['Tipo'] == 'Rematrícula']</pre>
 
 
@@ -121,7 +122,7 @@ rematrícula = Assistente.loc[Assistente['Tipo'] == 'Rematrícula']</pre>
 
 A segunda análise foi feita separando a base em meses, contando o número de matrículas e calculando a média deles.
 
-<pre lang = "markdown">dataNovaMatrícula = {
+<pre lang = "Python">dataNovaMatrícula = {
     'Meses' : ['Agosto', 'Setembro', 'Outubro','Novembro', 'Dezembro', 'Janeiro', 'Fevereiro'],
     'Media de Descontos' : [round(AgostoNM['Bolsa'].mean()), round(SetembroNM['Bolsa'].mean()), round(OutubroNM['Bolsa'].mean()), round(NovembroNM['Bolsa'].mean()), round(DezembroNM['Bolsa'].mean()), round(JaneiroNM['Bolsa'].mean()), round(FevereiroNM['Bolsa'].mean())],
     'Número de matrículas' : [AgostoNM['Bolsa'].count(), SetembroNM['Bolsa'].count(), OutubroNM['Bolsa'].count(), NovembroNM['Bolsa'].count(), DezembroNM['Bolsa'].count(), JaneiroNM['Bolsa'].count(), FevereiroNM['Bolsa'].count()]
@@ -168,7 +169,7 @@ Enquanto nas novas matrículas, o pico acontece nos meses de novembro e dezembro
 
 A terceira análise foi feita pegando os nomes de cada unidade do Coleguium.
 
-<pre lang="markdown">Aescolas1 = set(novaMatrícula['Unidade'].unique()) 
+<pre lang="Python">Aescolas1 = set(novaMatrícula['Unidade'].unique()) 
 escolas2 = set(rematrícula['Unidade'].unique())</pre>
 
 
@@ -194,7 +195,7 @@ Para rematrícula: todas unidades dão bolsas que vão até 100%.
 Então foi feita a média das bolsas de cada unidade usando o seguinte cálculo:
 
 
-<pre lang="markdown">médiaNovaMatrícula = novaMatrícula.groupby('Unidade').agg(
+<pre lang="Python">médiaNovaMatrícula = novaMatrícula.groupby('Unidade').agg(
     Soma = ('Bolsa', 'sum'),
     numDescontos = ('Bolsa' , 'count')
 )
@@ -228,7 +229,7 @@ As novas matrículas tiveram uma vantagem ligeira em média de descontos.
 A quantidade desconstos não parece ter muita relação com o número de matrículas nos casos além dp Carajás.
 
 
-## 8. Conclusão
+##  Conclusão
 
 Foi possível perceber com a análise que existe uma diferença entre as novas matrículas e as rematrículas.
 Diferença que é necessária ser considerada para as estratégias de negócios.
