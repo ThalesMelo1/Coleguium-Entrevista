@@ -66,22 +66,49 @@ Assistente['Data da matrícula'] = pd.to_datetime(Assistente['Data da matrícula
 
 ### Primeira Análise:
 
-Substitua o título pelo nome do algoritmo que será utilizado. P. ex. árvore de decisão, rede neural, SVM, etc.
-Justifique a escolha do modelo.
-Apresente o processo utilizado para amostragem de dados (particionamento, cross-validation).
-Descreva os parâmetros utilizados. 
-Apresente trechos do código utilizado comentados. Se utilizou alguma ferramenta gráfica, apresente imagens
-com o fluxo de processamento.
-
-
-
-### Segunda Análise:
 
 **Objetivo: identificação do tempo médio que as famílias levam para sematricular após a realização da inscrição e o período do ciclo de matrículas em queesse tempo médio entre inscrição e matrícula é mais curto.**
 
 A primeira análise foi feita calculando a diferença dos dias entre a data da inscrição e a matrícula. Então foi realizado a separação das novas matrículas das rematrículas.
 
-<pre lang="markdown"Assistente['Diferença'] = (Assistente['Data da matrícula'] - Assistente['Data de Inscrição']).dt.days```
+<pre lang="markdown">Assistente['Diferença'] = (Assistente['Data da matrícula'] - Assistente['Data de Inscrição']).dt.days</pre>
+
+<pre lang="markdown">matriculaNova = Assistente.loc[Assistente['Tipo'] == 'Matrícula nova']
+rematrícula = Assistente.loc[Assistente['Tipo'] == 'Rematrícula']</pre>
+
+**Observação: Essa separação foi feita durante toda a análise.**
+
+#### **Resultados**
+
+ média de dias para fazer uma nova matrícula é de: 28 dias.
+
+ A média de dias para fazer uma rematrícula é de: 84 dias.
+ 
+
+### Segunda Análise:
+
+**Objetivo: Identifique se há alguma correlação entre os descontos concedidos, o período do ciclo e o volume de matrículas no período.**
+
+A segunda análise foi feita separando a base em meses, contando o número de matrículas e calculando a média deles.
+
+<pre lang = "markdown">dataNovaMatrícula = {
+    'Meses' : ['Agosto', 'Setembro', 'Outubro','Novembro', 'Dezembro', 'Janeiro', 'Fevereiro'],
+    'Media de Descontos' : [round(AgostoNM['Bolsa'].mean()), round(SetembroNM['Bolsa'].mean()), round(OutubroNM['Bolsa'].mean()), round(NovembroNM['Bolsa'].mean()), round(DezembroNM['Bolsa'].mean()), round(JaneiroNM['Bolsa'].mean()), round(FevereiroNM['Bolsa'].mean())],
+    'Número de matrículas' : [AgostoNM['Bolsa'].count(), SetembroNM['Bolsa'].count(), OutubroNM['Bolsa'].count(), NovembroNM['Bolsa'].count(), DezembroNM['Bolsa'].count(), JaneiroNM['Bolsa'].count(), FevereiroNM['Bolsa'].count()]
+}
+
+dataRematrícula = {
+    'Meses' : ['Agosto', 'Setembro', 'Outubro','Novembro', 'Dezembro', 'Janeiro', 'Fevereiro'],
+    'Media de Descontos' : [round(AgostoRM['Bolsa'].mean()), round(SetembroRM['Bolsa'].mean()), round(OutubroRM['Bolsa'].mean()), round(NovembroRM['Bolsa'].mean()), round(DezembroRM['Bolsa'].mean()), round(JaneiroRM['Bolsa'].mean()), round(FevereiroRM['Bolsa'].mean())],
+    'Número de matrículas' : [AgostoRM['Bolsa'].count(), SetembroRM['Bolsa'].count(), OutubroRM['Bolsa'].count(), NovembroRM['Bolsa'].count(), DezembroRM['Bolsa'].count(), JaneiroRM['Bolsa'].count(), FevereiroRM['Bolsa'].count()]
+}</pre>
+
+
+#### Resultados
+
+
+
+
 
 
 
