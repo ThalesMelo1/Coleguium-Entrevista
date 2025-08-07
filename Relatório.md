@@ -76,7 +76,9 @@ A primeira análise foi feita calculando a diferença dos dias entre a data da i
 <pre lang="markdown">matriculaNova = Assistente.loc[Assistente['Tipo'] == 'Matrícula nova']
 rematrícula = Assistente.loc[Assistente['Tipo'] == 'Rematrícula']</pre>
 
+
 **Observação: Essa separação foi feita durante toda a análise.**
+
 
 #### **Resultados**
 
@@ -89,7 +91,9 @@ rematrícula = Assistente.loc[Assistente['Tipo'] == 'Rematrícula']</pre>
 
 ### Segunda Análise:
 
+
 **Objetivo: Identifique se há alguma correlação entre os descontos concedidos, o período do ciclo e o volume de matrículas no período.**
+
 
 A segunda análise foi feita separando a base em meses, contando o número de matrículas e calculando a média deles.
 
@@ -106,15 +110,19 @@ dataRematrícula = {
 }</pre>
 
 
+
 #### Resultados
+
 
 <img width="839" height="376" alt="image" src="https://github.com/user-attachments/assets/917924d4-6ecd-44cc-867a-3fbe83b014b3" />
 
 <img width="977" height="376" alt="image" src="https://github.com/user-attachments/assets/c25dcf3e-5aee-4517-89b9-95921d035d0c" />
 
+
 Existe uma enorme diferença de quantidade entre as novas matrículas e as rematrículas.
 O que é possível perceber para as novas matrículas é que os meses de outubro, dezembro e novembro são os que mais tem registro de matrícula. 
 Já nas rematrículas, o mês com mais registros foi o de janeiro.
+
 
 A média de descontos sobe linearmente pelos meses nas rematrículas, chegando ao seu pico de quase 70% em fevereiro.
 Enquanto nas novas matrículas, o pico acontece nos meses de novembro e dezembro.
@@ -125,12 +133,15 @@ Enquanto nas novas matrículas, o pico acontece nos meses de novembro e dezembro
 
 ### Terceira Análise
 
+
 **Objetivo: Quais unidades apresentam maior concessão de descontos e qual o % médio de descontos concedidos em cada unidade? Relacione essa informação de quantidade de descontos com a relação de nº de leads e matrículas para essa unidade.**
+
 
 A terceira análise foi feita pegando os nomes de cada unidade do Coleguium.
 
 <pre lang="markdown">Aescolas1 = set(novaMatrícula['Unidade'].unique()) 
 escolas2 = set(rematrícula['Unidade'].unique())</pre>
+
 
 Então foi demonstrado quais unidades dão mais desconto.
 
