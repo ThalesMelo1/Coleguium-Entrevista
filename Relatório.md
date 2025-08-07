@@ -6,7 +6,7 @@
 
 ---
 
-_**Resumo**. Relatório da análise feita das matrículas das unidades do Colégio Coleguium. 
+**Resumo**. Relatório da análise feita das matrículas das unidades do Colégio Coleguium. 
 
 ---
 
@@ -83,6 +83,8 @@ rematrícula = Assistente.loc[Assistente['Tipo'] == 'Rematrícula']</pre>
  média de dias para fazer uma nova matrícula é de: 28 dias.
 
  A média de dias para fazer uma rematrícula é de: 84 dias.
+
+ ---
  
 
 ### Segunda Análise:
@@ -106,13 +108,51 @@ dataRematrícula = {
 
 #### Resultados
 
+<img width="839" height="376" alt="image" src="https://github.com/user-attachments/assets/917924d4-6ecd-44cc-867a-3fbe83b014b3" />
+
+<img width="977" height="376" alt="image" src="https://github.com/user-attachments/assets/c25dcf3e-5aee-4517-89b9-95921d035d0c" />
+
+Existe uma enorme diferença de quantidade entre as novas matrículas e as rematrículas.
+O que é possível perceber para as novas matrículas é que os meses de outubro, dezembro e novembro são os que mais tem registro de matrícula. 
+Já nas rematrículas, o mês com mais registros foi o de janeiro.
+
+A média de descontos sobe linearmente pelos meses nas rematrículas, chegando ao seu pico de quase 70% em fevereiro.
+Enquanto nas novas matrículas, o pico acontece nos meses de novembro e dezembro.
 
 
-
-
+---
 
 
 ### Terceira Análise
+
+**Objetivo: Quais unidades apresentam maior concessão de descontos e qual o % médio de descontos concedidos em cada unidade? Relacione essa informação de quantidade de descontos com a relação de nº de leads e matrículas para essa unidade.**
+
+A terceira análise foi feita pegando os nomes de cada unidade do Coleguium.
+
+<pre lang="markdown">Aescolas1 = set(novaMatrícula['Unidade'].unique()) 
+escolas2 = set(rematrícula['Unidade'].unique())</pre>
+
+Então foi demonstrado quais unidades dão mais desconto.
+
+Para novas matrículas esse foi o resultado:
+Carajás;
+Conceição do Mato Dentro;
+Alípio de Melo;
+Mais Pampulha;
+Ouro Preto;
+Lagoa Santa;
+Castelo;
+Mais Cidade Nova;
+Carlos Prates;
+Santa Amélia;
+Nova Suíça;
+Castelo Manacás;
+Com todas listadas acima dando 100% de bolsa.
+
+Para rematrícula: todas unidades dão bolsas que vão até 100%.
+
+
+
 
 
 
