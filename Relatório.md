@@ -151,13 +151,25 @@ Com todas listadas acima dando 100% de bolsa.
 
 Para rematrícula: todas unidades dão bolsas que vão até 100%.
 
+Então foi feita a média das bolsas de cada unidade usando o seguinte cálculo:
 
 
+<pre lang="markdown">médiaNovaMatrícula = novaMatrícula.groupby('Unidade').agg(
+    Soma = ('Bolsa', 'sum'),
+    numDescontos = ('Bolsa' , 'count')
+)
+médiaNovaMatrícula['média'] = round(médiaNovaMatrícula['Soma']/médiaNovaMatrícula['numDescontos'])
 
-
+médiaRematrícula = rematrícula.groupby('Unidade').agg(
+    Soma = ('Bolsa', 'sum'),
+    numDescontos = ('Bolsa' , 'count')
+)
+médiaRematrícula['média'] = round(médiaRematrícula['Soma']/médiaRematrícula['numDescontos'])</pre>
 
 
 ## Resultados
+
+
 
 
 
